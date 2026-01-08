@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@keyframes signal-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @font-face {
   font-family: "Stack Sans Notch";
   font-style: normal;
@@ -205,6 +214,7 @@ a {
   border-radius: 50%;
   transform: rotate(18deg);
   z-index: 1;
+  animation: signal-rotate 6s linear infinite;
 }
 
 .signal::after {
@@ -337,6 +347,7 @@ a {
   background: #0b1022;
   color: rgba(255, 255, 255, 0.7);
   padding: 48px 72px 60px;
+  position: relative; /* allow absolute placement of footer-meta */
 }
 
 .footer-inner {
@@ -361,8 +372,12 @@ a {
   gap: 18px;
   font-size: 13px;
   letter-spacing: 0.08em;
+  position: absolute; /* pin to top-right */
+  right: 40px; /* match footer horizontal padding */
+  top: 10px; /* moved much higher */
+  background: transparent;
+  z-index: 4;
 }
-
 .footer-meta span {
   color: rgba(255, 255, 255, 0.55);
 }
@@ -370,7 +385,7 @@ a {
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 8px; /* reduced spacing between icons */
   align-items: center;
   justify-content: flex-end;
 }
@@ -396,6 +411,49 @@ a {
 .footer-link svg {
   width: 18px;
   height: 18px;
+  fill: currentColor;
+}
+
+/* Instagram anchor: no outer border, transparent background; keep spacing */
+.footer-link.instagram-link {
+  border: none;
+  background: transparent;
+  width: 28px;
+  height: 28px;
+  padding: 0 2px; /* small horizontal padding for spacing */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #ffffff; /* icons use currentColor */
+}
+
+/* Instagram svg: 24px and follow currentColor for proper contrast/hover */
+.footer-link.instagram-link .instagram-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: currentColor;
+}
+
+/* GitHub icon: no outer border, transparent background; keep spacing and use currentColor */
+.footer-link.github-link {
+  border: none;
+  background: transparent;
+  width: 28px;
+  height: 28px;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #ffffff;
+}
+
+.footer-link.github-link .github-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
   fill: currentColor;
 }
 
@@ -442,6 +500,14 @@ a {
   .footer-links {
     justify-content: flex-start;
   }
+
+  /* On smaller screens, place meta back into the normal flow */
+  .footer-meta {
+    position: static;
+    right: auto;
+    top: auto;
+    margin-top: 8px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -469,10 +535,50 @@ a {
     letter-spacing: 0.04em;
   }
 
-  .panel-left,
-  .signal,
-  .spark {
-    display: none;
+  .panel-left {
+    width: 200px;
+    height: 200px;
+    left: -110px;
+    top: 100px;
+  }
+
+  .panel-left::after {
+    width: 120px;
+    height: 120px;
+    top: 40px;
+    left: 40px;
+  }
+
+  .signal {
+    width: 150px;
+    height: 150px;
+    right: -30px;
+    top: 60px;
+  }
+
+  .signal::after {
+    inset: 24px;
+  }
+
+  .spark.s1 {
+    right: 70px;
+    top: 80px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .spark.s2 {
+    right: 50px;
+    top: 200px;
+    width: 4px;
+    height: 4px;
+  }
+
+  .spark.s3 {
+    left: 60px;
+    bottom: 150px;
+    width: 5px;
+    height: 5px;
   }
 
   .hero-frame {
