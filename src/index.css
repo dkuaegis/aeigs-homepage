@@ -237,13 +237,6 @@ a {
   color: var(--muted);
 }
 
-.club-tag::before {
-  content: "";
-  width: 44px;
-  height: 1px;
-  background: var(--line);
-}
-
 .hero-title {
   font-family: "Stack Sans Notch", "Space Grotesk", sans-serif;
   font-size: clamp(64px, 12vw, 160px);
