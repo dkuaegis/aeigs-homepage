@@ -2,12 +2,12 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
 // 활동 이미지 import
-import studyImg from './assets/study.jpeg';
-import codeClubImg from './assets/code-club.png';
-import devTeamImg from './assets/dev-team.png';
-import securityTeamImg from './assets/security-team.png';
-import seminarImg from './assets/seminar.jpeg';
-import techTalkImg from './assets/tech-talk.jpeg';
+import studyImg from './assets/study.webp';
+import codeClubImg from './assets/code-club.webp';
+import devTeamImg from './assets/dev-team.webp';
+import securityTeamImg from './assets/security-team.webp';
+import seminarImg from './assets/seminar.webp';
+import techTalkImg from './assets/tech-talk.webp';
 
 function App() {
 
